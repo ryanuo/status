@@ -43,7 +43,7 @@ watch(() => data.value, (newValue) => {
         </div>
         <div class="headerright">
           <a
-            href="https://github.com/shadowqcom/knloop-service-status" rel="nofollow" target="_blank"
+            href="https://github.com/ryanuo/status" rel="nofollow" target="_blank"
             class="stars-on-github-btn inline-flex items-center justify-center"
           >
             <span class="i-carbon-logo-github" />
