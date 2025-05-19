@@ -72,12 +72,11 @@ watch(() => data.value, (newValue) => {
       <p><span id="uag">UA : {{ userAgent }}</span></p>
     </div>
 
-    <footer>
+    <footer text-xs>
       <p>
-        <a href="https://ryanuo.cc">ryanuo</a> pages status. code on
-        <a href="https://github.com/ryanuo/status">Github</a>
+        Based on the <a href="https://dashboard.uptimerobot.com/monitors" target="_blank">UptimeRobot</a> API, with a check frequency of every 5 minutes.
       </p>
-      <p class="copy-right">
+      <p class="copy-right mt-1">
         Copyright ©<span id="currentYear">{{ currentYear }}</span> ryanuo. All Rights Reserved.
       </p>
     </footer>
