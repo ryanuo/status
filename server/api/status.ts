@@ -14,7 +14,7 @@ function formatNumber(value: number | string): string {
 
 /** 生成日期范围和Unix时间戳 */
 function generateDateRanges(days: number = uppConfig.days) {
-  const dates: dayjs.Dayjs[] = []
+  const dates: any[] = []
   const today = dayjs().startOf('day')
 
   for (let d = 0; d < days; d++) {
@@ -28,7 +28,7 @@ function generateDateRanges(days: number = uppConfig.days) {
   }))
 
   const totalRange = {
-    start: dates[dates.length - 1].unix(),
+    start: dates[dates.length - 1]?.unix(),
     end: dates[0].add(1, 'day').unix(),
     format: `${dates[dates.length - 1].unix()}_${dates[0].add(1, 'day').unix()}`,
   }
@@ -42,7 +42,7 @@ function processMonitorData(monitors: MonitorData[], dates: dayjs.Dayjs[]): Proc
     const ranges = monitor.custom_uptime_ranges.split('-')
     const average = formatNumber(ranges.pop() || '0')
 
-    const daily: ProcessedMonitor['daily'] = []
+    const daily: any = []
     const dateMap: Record<string, number> = {}
 
     dates.forEach((date, index) => {
