@@ -1,14 +1,9 @@
 <script setup lang="ts">
-definePageMeta({
-  layout: 'home',
-})
-
 const online = useOnline()
 </script>
 
 <template>
   <div>
-    <Logos mb-6 />
     <ClientOnly>
       <Suspense>
         <PageView v-if="online" />
@@ -27,6 +22,5 @@ const online = useOnline()
         </div>
       </template>
     </ClientOnly>
-    <InputEntry />
   </div>
 </template>

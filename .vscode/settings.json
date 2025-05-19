@@ -4,7 +4,6 @@
   },
 
   // Disable the default formatter, use eslint instead
-  "prettier.enable": false,
   "editor.formatOnSave": false,
 
   // Auto fix
@@ -39,7 +38,11 @@
     "jsonc",
     "yaml"
   ],
-  "interline-translate.knownPopularWordCount": 6000,
   "iconify.annotations": true,
-  "iconify.inplace": true
+  "iconify.inplace": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  }
 }
