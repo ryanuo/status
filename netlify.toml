@@ -1,7 +1,6 @@
+[build]
+publish = "dist"
+command = "pnpm run build"
+
 [build.environment]
 NODE_VERSION = "20"
-
-[build]
-command = "pnpm run generate" # how to build your project
-functions = "netlify/functions" # where Netlify Functions live
-publish = "dist" # where the built project lives

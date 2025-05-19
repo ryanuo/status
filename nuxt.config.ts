@@ -37,6 +37,12 @@ export default defineNuxtConfig({
     classSuffix: '',
   },
 
+  routeRules: {
+    '/': { prerender: true },
+    '/api/**': { ssr: true, prerender: false },
+    '/api/status': { ssr: true, prerender: true },
+  },
+
   future: {
     compatibilityVersion: 4,
   },
