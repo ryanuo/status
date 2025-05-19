@@ -1,8 +1,19 @@
 import dayjs from 'dayjs'
+import timezone from 'dayjs/plugin/timezone' // 导入时区插件
+import utc from 'dayjs/plugin/utc' // 导入 UTC 插件
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 const uppConfig = {
   days: 60,
   apiKey: 'ur2482162-50c9dae9f951b84567bc8e2a',
+  defaultTimezone: 'Asia/Shanghai',
+}
+
+// 获取指定时区的当前时间
+function getCurrentTimeInTimezone(tz: string = uppConfig.defaultTimezone) {
+  return tz ? dayjs.tz(dayjs(), tz) : dayjs()
 }
 
 // ===== 工具函数 =====
@@ -13,9 +24,9 @@ function formatNumber(value: number | string): string {
 }
 
 /** 生成日期范围和Unix时间戳 */
-function generateDateRanges(days: number = uppConfig.days) {
+function generateDateRanges(days: number = uppConfig.days, tz = uppConfig.defaultTimezone) {
   const dates: any[] = []
-  const today = dayjs().startOf('day')
+  const today = getCurrentTimeInTimezone(tz).startOf('day')
 
   for (let d = 0; d < days; d++) {
     dates.push(today.subtract(d, 'day'))
