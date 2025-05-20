@@ -46,6 +46,11 @@ function handleMouseDown(status: DailyUptime) {
   statusDateMap.info = `${formattedDate} - Status:${getLineStatus(status).toUpperCase()}`
   statusDateMap.color = `var(--${getLineStatus(status)}-color)`
 }
+
+const status = computed(() => {
+  // 取0表示获取最新的数据
+  return getLineStatus(props.monitor.daily[0] as DailyUptime)
+})
 </script>
 
 <template>
@@ -55,10 +60,10 @@ function handleMouseDown(status: DailyUptime) {
       <div class="statusHeader-left">
         <!-- 状态图标 -->
         <div class="statusItemImageWrapper">
-          <div class="guangquan" :class="monitor.status === 'ok' ? 'success' : 'failure'" />
+          <div class="guangquan" :class="status" />
           <img
             class="statusIcon" alt="status"
-            :src="monitor.status === 'ok' ? '/check/success.svg' : '/check/failure.svg'"
+            :src="`/check/${status}.svg`"
           >
         </div>
         <!-- 监控项链接与标题 -->
