@@ -81,8 +81,8 @@ const status = computed(() => {
     <!-- 状态流容器（状态方块） -->
     <div class="statusStreamContainer">
       <div
-        v-for="(status, index) in reversedDaily" :key="index" :class="`statusSquare ${getLineStatus(status)}`"
-        @mouseover="handleMouseDown(status)" @mouseleave="statusDateMap.info = ''"
+        v-for="(item, index) in reversedDaily" :key="index" :class="`statusSquare ${getLineStatus(item)}`"
+        @mouseover="handleMouseDown(item)" @mouseleave="statusDateMap.info = ''"
       />
     </div>
     <div

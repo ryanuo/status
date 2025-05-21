@@ -60,8 +60,17 @@ body {
   --mobile-width: calc(100% - 2rem);
   background-color: #f6f8fa;
   font-family:
-    -apple-system, BlinkMacSystemFont, Arial, sans-serif, 'Open Sans', 'Segoe UI', 'Noto Sans', Helvetica,
-    'Apple Color Emoji', 'Segoe UI Emoji';
+    'Work Sans',
+    -apple-system,
+    BlinkMacSystemFont,
+    Arial,
+    sans-serif,
+    'Open Sans',
+    'Segoe UI',
+    'Noto Sans',
+    Helvetica,
+    'Apple Color Emoji',
+    'Segoe UI Emoji';
   justify-content: center;
   line-height: 20px;
   min-width: 300px;
