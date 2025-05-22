@@ -4,7 +4,8 @@ const currentYear = ref(new Date().getFullYear())
 const loading = ref(true)
 
 onMounted(() => {
-  userAgent.value = navigator.userAgent
+  if (navigator)
+    userAgent.value = navigator.userAgent
   loading.value = true
 })
 
@@ -60,14 +61,17 @@ watch(() => data.value, (newValue) => {
         Ryanuo's Pages Status
       </h1>
     </div>
-
     <div id="pageContainer" class="is-revealing pageContainer">
-      <div v-if="!loading" id="reports" class="reportContainer">
-        <MonitorComponent v-for="(monitor, index) in data || []" :key="index" :monitor="monitor" />
-      </div>
-      <Loading v-else />
+      <ClientOnly>
+        <!-- this component will only be rendered on client side -->
+        <div id="reports" class="reportContainer">
+          <MonitorComponent v-for="(monitor, index) in data || []" :key="index" :monitor="monitor" />
+        </div>
+        <template #fallback>
+          <Loading />
+        </template>
+      </ClientOnly>
     </div>
-
     <div id="clientInfo" class="clientInfo">
       <p><span id="uag">UA : {{ userAgent }}</span></p>
     </div>

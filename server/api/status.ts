@@ -137,7 +137,11 @@ async function fetchUptimeRobotData(apiKey: string, days: number = uppConfig.day
 }
 
 // ===== Nuxt服务器处理函数 =====
-export default defineEventHandler(async () => {
+export default defineEventHandler(async (event) => {
+  setHeader(event, 'Cache-Control', 'no-cache, no-store, must-revalidate')
+  setHeader(event, 'Pragma', 'no-cache')
+  setHeader(event, 'Expires', '0')
+
   try {
     const data = await fetchUptimeRobotData(uppConfig.apiKey)
     return data
