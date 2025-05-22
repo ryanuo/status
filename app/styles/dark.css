@@ -1,0 +1,66 @@
+/* 夜间模式样式 */
+.dark body {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+:root.dark {
+  --nodata-color: #a7a7a7;
+}
+
+.dark .headerinner a {
+  color: #e0e0e0;
+}
+
+.dark h1 {
+  color: #e0e0e0;
+}
+
+.dark h2 {
+  color: #e0e0e0;
+}
+
+.dark a {
+  color: #66cdaa;
+}
+
+.dark footer {
+  color: #777777;
+}
+
+.dark .pageContainer {
+  background-color: #1e1e1e;
+  box-shadow: 0 16px 48px #000;
+}
+
+.dark .clientInfo {
+  background-color: #1e1e1e;
+  box-shadow: 0 16px 48px #000;
+}
+
+.dark .headline div {
+  color: #999999;
+}
+
+.dark .statusUptime {
+  color: #999999;
+}
+
+.dark .align-left {
+  color: #999999;
+}
+
+.dark .align-right {
+  color: #999999;
+}
+
+.dark .clientInfo span {
+  color: #cccccc;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #444444;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: #666666;
+}

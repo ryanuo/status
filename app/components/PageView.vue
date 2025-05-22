@@ -45,7 +45,8 @@ watch(() => data.value, (newValue) => {
             <span>STATUS</span>
           </a>
         </div>
-        <div class="headerright">
+        <div class="headerright flex gap-2">
+          <DarkToggle />
           <a
             href="https://github.com/ryanuo/status" rel="nofollow" target="_blank"
             class="stars-on-github-btn inline-flex items-center justify-center"
