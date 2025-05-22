@@ -81,11 +81,6 @@ export default defineNuxtConfig({
     families: [
       {
         name: 'Work Sans',
-        src: [
-          {
-            url: 'https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap',
-          },
-        ],
       },
     ],
   },
