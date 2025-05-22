@@ -41,7 +41,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
     '/api/**': { ssr: true, prerender: false },
-    '/api/status': { ssr: true, prerender: true, headers: {
+    '/api/status': { ssr: true, prerender: false, headers: {
       'content-type': 'application/json',
     } },
   },
