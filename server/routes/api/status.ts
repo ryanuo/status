@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
-import timezone from 'dayjs/plugin/timezone' // 导入时区插件
-import utc from 'dayjs/plugin/utc' // 导入 UTC 插件
+import timezone from 'dayjs/plugin/timezone.js' // 导入时区插件
+import utc from 'dayjs/plugin/utc.js' // 导入 UTC 插件
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
