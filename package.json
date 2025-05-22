@@ -37,6 +37,7 @@
     "typescript": "catalog:dev",
     "unocss": "catalog:build",
     "vue": "catalog:frontend",
+    "vue-router": "catalog:dev",
     "vue-tsc": "catalog:dev"
   },
   "resolutions": {
