@@ -9,7 +9,10 @@ onMounted(() => {
   loading.value = true
 })
 
-const { data, status } = await useFetch<ProcessedMonitor[]>('/api/status')
+const { data, status } = await useFetch<ProcessedMonitor[]>('/api/status', {
+  lazy: true,
+  server: false,
+})
 
 const statusImgSrc = computed(() => {
   if (status.value === 'pending')
@@ -63,8 +66,9 @@ watch(() => data.value, (newValue) => {
     </div>
     <div id="pageContainer" class="is-revealing pageContainer">
       <ClientOnly>
+        <Loading v-if="loading" />
         <!-- this component will only be rendered on client side -->
-        <div id="reports" class="reportContainer">
+        <div v-else id="reports" class="reportContainer">
           <MonitorComponent v-for="(monitor, index) in data || []" :key="index" :monitor="monitor" />
         </div>
         <template #fallback>
