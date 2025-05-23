@@ -18,9 +18,14 @@ function toggleTheme() {
 </script>
 
 <template>
-  <button class="!outline-none cursor-pointer" @click="toggleTheme">
-    <div v-if="color.preference === 'light'" class="i-carbon-sun" />
-    <div v-else-if="color.preference === 'dark'" class="i-carbon-moon" />
-    <div v-else class="i-carbon-ibm-cloud-sysdig-secure" /> <!-- system mode icon -->
-  </button>
+  <ClientOnly>
+    <button class="!outline-none cursor-pointer" @click="toggleTheme">
+      <div v-if="color.preference === 'light'" class="i-carbon-sun" />
+      <div v-else-if="color.preference === 'dark'" class="i-carbon-moon" />
+      <div v-else class="i-carbon-ibm-cloud-sysdig-secure" /> <!-- system mode icon -->
+    </button>
+    <template #fallback>
+      <div class="i-carbon-ibm-cloud-sysdig-secure" />
+    </template>
+  </ClientOnly>
 </template>

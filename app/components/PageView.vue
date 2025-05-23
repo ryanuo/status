@@ -1,12 +1,10 @@
 <script setup lang="ts">
 const userAgent = ref('')
 const currentYear = ref(new Date().getFullYear())
-const loading = ref(true)
 
 onMounted(() => {
   if (navigator)
     userAgent.value = navigator.userAgent
-  loading.value = true
 })
 
 const { data, status } = await useFetch<ProcessedMonitor[]>('/api/status', {
@@ -14,24 +12,18 @@ const { data, status } = await useFetch<ProcessedMonitor[]>('/api/status', {
   server: false,
 })
 
-const statusImgSrc = computed(() => {
+const statusVal = computed(() => {
   if (status.value === 'pending')
-    return '/check/nodata.svg'
+    return 'nodata'
 
   if (data.value?.every(item => item.status === 'ok')) {
-    return '/check/success.svg'
+    return 'success'
   }
   else if (data.value?.some(item => item.status === 'down')) {
-    return '/check/failure.svg'
+    return 'failure'
   }
 
-  return '/check/nodata.svg'
-})
-
-watch(() => data.value, (newValue) => {
-  if (newValue?.length) {
-    loading.value = false
-  }
+  return 'nodata'
 })
 </script>
 
@@ -58,8 +50,8 @@ watch(() => data.value, (newValue) => {
     </header>
 
     <div id="SiteInfo" class="headline">
-      <span id="lastDayStatus">
-        <img id="statusImg" class="statusImg icobeat" :src="statusImgSrc" alt="status" loading="eager">
+      <span id="lastDayStatus" :key="statusVal">
+        <img id="statusImg" class="statusImg" :class="{ icobeat: statusVal !== 'success' }" :src="`/check/${statusVal}.svg`" alt="status" loading="eager">
       </span>
       <h1 class="is-revealing hero-title text-2xl">
         Ryanuo's Pages Status
@@ -67,10 +59,9 @@ watch(() => data.value, (newValue) => {
     </div>
     <div id="pageContainer" class="is-revealing pageContainer">
       <ClientOnly>
-        <Loading v-if="loading" />
-        <!-- this component will only be rendered on client side -->
-        <div v-else id="reports" class="reportContainer">
-          <MonitorComponent v-for="(monitor, index) in data || []" :key="index" :monitor="monitor" />
+        <div id="reports" class="reportContainer">
+          <Loading v-if="statusVal === 'nodata'" />
+          <MonitorComponent v-for="(monitor, index) in data || []" v-else :key="index" :monitor="monitor" />
         </div>
         <template #fallback>
           <Loading />
@@ -86,7 +77,7 @@ watch(() => data.value, (newValue) => {
         Based on the <a href="https://dashboard.uptimerobot.com/monitors" target="_blank">UptimeRobot</a> API, with a check frequency of every 5 minutes.
       </p>
       <p class="copy-right mt-1">
-        Copyright ©<span id="currentYear">{{ currentYear }}</span> ryanuo. All Rights Reserved.
+        Copyright ©<span id="currentYear">{{ currentYear }}</span> <a href="https://github.com/ryanuo" target="_blank">ryanuo</a>. All Rights Reserved.
       </p>
     </footer>
   </div>
