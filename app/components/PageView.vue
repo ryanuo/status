@@ -56,6 +56,9 @@ const statusVal = computed(() => {
       <h1 class="is-revealing hero-title text-2xl">
         Ryanuo's Pages Status
       </h1>
+      <p v-if="data?.length" id="updateTime" class="is-revealing lastUpdatedTime">
+        total monitors: {{ data?.length }}
+      </p>
     </div>
     <div id="pageContainer" class="is-revealing pageContainer">
       <ClientOnly>
